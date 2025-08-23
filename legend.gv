@@ -1,0 +1,54 @@
+digraph Legend {
+    graph [
+        bgcolor="#F5F5F5",
+        fontname="Helvetica,Arial,sans-serif",
+        label="Legend",
+        fontcolor="black",
+        fontsize=10,
+        style=rounded
+    ];
+    node [
+        fontname="Helvetica,Arial,sans-serif",
+        style=filled,
+        fontcolor="black",
+        fontsize=8,
+        shape=box
+    ];
+    edge [
+        fontname="Helvetica,Arial,sans-serif",
+        fontsize=8
+    ];
+
+    // Node Type Keys
+    Overworld_Key [label="Overworld", color="#2E7D32", fillcolor="#A5D6A7"];
+    Nether_Key [label="Nether", color="#C62828", fillcolor="#FFCDD2"];
+    End_Key [label="The End", color="#4A148C", fillcolor="#E1BEE7"];
+    Dual_Key [label="Overworld/Nether", style=wedged, shape=ellipse, color="#2E7D32", fillcolor="#A5D6A7:#FFCDD2"];
+    Dual_Key_End [label="Overworld/The End", style=wedged, shape=ellipse, color="#2E7D32", fillcolor="#A5D6A7:#E1BEE7"];
+
+    // Invisible nodes for line style keys
+    node [shape=point, width=0, height=0, label=""];
+    Rail_Key_Start; Rail_Key_End;
+    Nether_Rail_Key_Start; Nether_Rail_Key_End;
+    Overworld_Rail_Key_Start; Overworld_Rail_Key_End;
+    End_Rail_Key_Start; End_Rail_Key_End;
+    Footpath_Key_Start; Footpath_Key_End;
+
+    // Ensure horizontal alignment for line style keys
+    { rank=same; Rail_Key_Start; Rail_Key_End; }
+    { rank=same; Nether_Rail_Key_Start; Nether_Rail_Key_End; }
+    { rank=same; Overworld_Rail_Key_Start; Overworld_Rail_Key_End; }
+    { rank=same; End_Rail_Key_Start; End_Rail_Key_End; }
+    { rank=same; Footpath_Key_Start; Footpath_Key_End; }
+
+    // Define vertical alignment using invisible edges
+    edge [style=invis, len=0.5];
+    Overworld_Key -> Nether_Key -> End_Key -> Dual_Key -> Dual_Key_End -> Rail_Key_Start -> Nether_Rail_Key_Start -> Overworld_Rail_Key_Start -> End_Rail_Key_Start -> Footpath_Key_Start;
+    
+    // Draw the visible edges for the legend line styles
+    Rail_Key_Start -> Rail_Key_End [dir=none, style=bold, color="#4285F4", label="Intercontinental Railroad"];
+    Nether_Rail_Key_Start -> Nether_Rail_Key_End [dir=none, style=dotted, color="#C62828", label="Nether Rail"];
+    Overworld_Rail_Key_Start -> Overworld_Rail_Key_End [dir=none, style="", color="black", label="Overworld Rail"];
+    End_Rail_Key_Start -> End_Rail_Key_End [dir=none, style=dashed, color="#4A148C", label="End Rail"];
+    Footpath_Key_Start -> Footpath_Key_End [dir=none, style=dashed, color="#795548", label="Footpath"];
+}

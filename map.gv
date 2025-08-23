@@ -1,0 +1,98 @@
+digraph MinecraftRailMap {
+    // Set global graph, node, and edge attributes for a consistent look
+    graph [
+        bb="0,0,20,40",
+        bgcolor="white",
+        fontname="Helvetica,Arial,sans-serif",
+        label="Minecraft Transit Map",
+        fontcolor="black",
+        fontsize=24
+    ];
+    node [
+        fontname="Helvetica,Arial,sans-serif",
+        style=filled,
+        fontcolor="black",
+        penwidth=2
+    ];
+    edge [
+        fontname="Helvetica,Arial,sans-serif",
+        color="black"
+    ];
+
+    // == OVERWORLD NODES ==
+    // Nodes are colored in shades of green to represent the Overworld.
+    node [color="#2E7D32", fillcolor="#A5D6A7"];
+    Sheep_Farm [label="Sheep Farm"];
+    Drowned_Farm [label="Drowned Farm"];
+    Mob_Grinder [label="Mob Grinder"];
+    Guardian_Farm [label="Guardian Farm"];
+    Russells_Tower [label="Russell's Tower"];
+    Cliffertown [label="Cliffertown"];
+    Mahjong_Parlour [label="Mahjong Parlour"];
+    Atlantis [label="Atlantis"];
+
+    // == NETHER NODES ==
+    node [color="#C62828", fillcolor="#FFCDD2"];
+    CUBO [label="CUBO"];
+    Gold_Farm [label="Gold Farm"];
+
+    // == THE END NODES ==
+    node [color="#4A148C", fillcolor="#E1BEE7"];
+    Enderman_Farm [label="Enderman Farm"];
+
+    // == DUAL-DIMENSION NODES ==
+    node [style=wedged, penwidth=2, shape=ellipse];
+    Home [label="Home", color="#2E7D32", fillcolor="#A5D6A7:#FFCDD2"];
+    Baddylands [label="Baddylands", color="#2E7D32", fillcolor="#A5D6A7:#FFCDD2"];
+    End_Village [label="End Village", color="#2E7D32", fillcolor="#A5D6A7:#E1BEE7"];
+
+    // Invisible junction node
+    Junction1 [shape=point, width=0, height=0, label=""];
+
+    // Invisible nodes to guide layout
+    node [style=invis, shape=point, width=0, height=0, label=""];
+    Rank1; Rank2; Rank3; Rank4;
+    edge [style=invis, len=2];
+    Rank1 -> Rank2 -> Rank3 -> Rank4;
+
+    // == EDGES / RAIL CONNECTIONS ==
+    // Main railroad line
+    edge [dir=none, style=bold, color="#4285F4"];
+    Home -> Sheep_Farm [len=1];
+    Sheep_Farm -> Drowned_Farm [len=2];
+    Drowned_Farm -> Junction1 [len=2];
+    Junction1 -> Mob_Grinder [len=3];
+
+    // Invisible edges to guide layout
+    edge [style=invis, len=0.01];
+    {rank=same; Home; Rank1;}
+    {rank=same; Sheep_Farm; Rank2;}
+    {rank=same; Drowned_Farm; Rank3;}
+    {rank=same; Mob_Grinder; Rank4;}
+    {rank=same; Guardian_Farm; Rank4;}
+
+    // Spur lines
+    edge [dir=none, style="", color="black"];
+    Junction1 -> Guardian_Farm [len=3];
+    Home -> Russells_Tower [len=1];
+    Home -> Cliffertown [len=1];
+    Home -> Mahjong_Parlour [len=1];
+    Home -> Atlantis [len=10];
+
+    // Nether rail
+    edge [dir=none, style=dotted, color="#C62828"];
+    Home -> CUBO [len=1];
+    CUBO -> Baddylands [len=2];
+    Home -> End_Village [len=3];
+
+    // End rail
+    edge [dir=none, style=dashed, color="#4A148C"];
+    End_Village -> Enderman_Farm [len=2];
+
+    // Footpath
+    edge [dir=none, style=dashed, color="#795548"];
+    Home -> Gold_Farm [len=1];
+
+
+    
+}
