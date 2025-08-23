@@ -12,8 +12,7 @@ map.svg: map_body.svg legend.svg combine_svg.py
 	~/venv/bin/python3 combine_svg.py > /dev/null
 
 map.png: map.svg
-	SIZE=$$(~/venv/bin/python3 combine_svg.py 2>&1 >/dev/null); \
-	convert -size $$SIZE map.svg map.png
+	convert -size $$(~/venv/bin/python3 combine_svg.py 2>&1 >/dev/null) map.svg map.png
 
 clean:
 	rm -f map_body.svg legend.svg map.svg map.png
