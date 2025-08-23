@@ -45,7 +45,7 @@ digraph Legend {
 
     // Define vertical alignment using invisible edges
     edge [style=invis, len=0.5];
-    Overworld_Key -> Nether_Key -> End_Key -> Rail_Key_Start -> Nether_Rail_Key_Start -> Overworld_Rail_Key_Start -> End_Rail_Key_Start -> Footpath_Key_Start -> Nether_Express_Key_Start;
+    Overworld_Key -> Nether_Key -> End_Key -> Dual_Key -> Tri_Key -> Rail_Key_Start -> Nether_Rail_Key_Start -> Overworld_Rail_Key_Start -> End_Rail_Key_Start -> Footpath_Key_Start -> Nether_Express_Key_Start;
     
     // Draw the visible edges for the legend line styles
     Rail_Key_Start -> Rail_Key_End [dir=none, style=bold, color="#4285F4", label="Intercontinental Railroad"];
