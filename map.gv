@@ -1,13 +1,13 @@
 digraph MinecraftRailMap {
     // Set global graph, node, and edge attributes for a consistent look
     graph [
+        mode="KK",
         bb="0,0,20,40",
-        overlap="scale",
+        overlap="prism",
         bgcolor="white",
         fontname="Helvetica,Arial,sans-serif",
         label="Minecraft Transit Map",
         fontcolor="black",
-        fontsize=24
     ];
     node [
         fontname="Helvetica,Arial,sans-serif",
@@ -23,6 +23,8 @@ digraph MinecraftRailMap {
     // == OVERWORLD NODES ==
     // Nodes are colored in shades of green to represent the Overworld.
     node [color="#2E7D32", fillcolor="#A5D6A7"];
+    Chapel [label="Chapel"];
+    Cow_Farm [label="Cow Farm"];
     Sheep_Farm [label="Sheep Farm"];
     Drowned_Farm [label="Drowned Farm"];
     Mob_Grinder [label="Mob Grinder"];
@@ -86,7 +88,9 @@ digraph MinecraftRailMap {
     // Main railroad line
     edge [dir=none, style=bold, color="#4285F4"];
     Home -> Sheep_Farm;
-    Sheep_Farm -> Drowned_Farm;
+    Sheep_Farm -> Cow_Farm;
+    Cow_Farm -> Chapel;
+    Chapel -> Drowned_Farm;
     Drowned_Farm -> Junction1;
     Junction1 -> Mob_Grinder;
     Mob_Grinder -> CUBO;
@@ -146,7 +150,4 @@ digraph MinecraftRailMap {
     Home -> Gold_Farm;
     Home -> Bartering_Farm;
     Home -> Wither_Skeleton_Farm;
-
-
-    
 }
