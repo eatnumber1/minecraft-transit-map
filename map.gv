@@ -33,7 +33,6 @@ digraph MinecraftRailMap {
     Cliffertown [label="Cliffertown"];
     Mahjong_Parlour [label="Mahjong Parlour"];
     Desert_Village [label="Desert Village"];
-    Trial_Chamber [label="Trial Chamber"];
     Slacktown [label="Slacktown"];
     Sim_Tower [label="Sim Tower"];
     Squid_Farm [label="Squid Farm"];
@@ -69,6 +68,7 @@ digraph MinecraftRailMap {
     Pillager [label="Pillager", color="#2E7D32", fillcolor="#A5D6A7:#FFCDD2"];
     Mangrove_Station [label="Mangrove Station", color="#2E7D32", fillcolor="#A5D6A7:#FFCDD2"];
     vvitch [label="vvitch", color="#2E7D32", fillcolor="#A5D6A7:#FFCDD2"];
+    Trial_Chamber [label="Trial Chamber", color="#2E7D32", fillcolor="#A5D6A7:#FFCDD2"];
 
     // == TRI-DIMENSION NODES ==
     End_Village [label="End Village", style=wedged, penwidth=2, shape=ellipse, color="#2E7D32", fillcolor="#A5D6A7:#FFCDD2:#E1BEE7"];
@@ -104,7 +104,6 @@ digraph MinecraftRailMap {
     Home -> Mahjong_Parlour;
     Home -> Sim_Tower;
     Portal_Island -> Desert_Village;
-    End_Village -> Trial_Chamber;
     Home -> Atlantis; // New Overworld route
     CUBO -> Squid_Farm;
     CUBO -> Worrton;
@@ -135,6 +134,7 @@ digraph MinecraftRailMap {
     Junction8 -> Mangrove_Station;
     Mangrove_Station -> WTO_Memorial;
     Junction8 -> Pillager;
+    End_Village -> Trial_Chamber;
 
     // Nether Express Rail
     edge [dir=none, style=bold, color="#E53935"];
