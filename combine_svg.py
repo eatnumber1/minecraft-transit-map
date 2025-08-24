@@ -50,7 +50,7 @@ def combine_svgs(map_file, legend_file, output_file):
     etree.ElementTree(new_root).write(output_file, pretty_print=True, xml_declaration=True, encoding='utf-8')
 
     # Print the final dimensions for ImageMagick
-    print(f"{int(total_width)}x{int(total_height)}", file=sys.stderr)
+    print(f"{int(total_width)}x{int(total_height)}")
 
 if __name__ == '__main__':
     combine_svgs('map_body.svg', 'legend.svg', 'map.svg')
