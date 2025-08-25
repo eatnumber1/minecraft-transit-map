@@ -23,8 +23,6 @@ digraph Legend {
     Overworld_Key [label="Overworld", color="#2E7D32", fillcolor="#A5D6A7"];
     Nether_Key [label="Nether", color="#C62828", fillcolor="#FFCDD2"];
     End_Key [label="The End", color="#4A148C", fillcolor="#E1BEE7"];
-    Dual_Key [label="Overworld/Nether", style=wedged, shape=ellipse, color="#2E7D32", fillcolor="#A5D6A7:#FFCDD2"];
-    Tri_Key [label="Overworld/Nether/End", style=wedged, shape=ellipse, color="#2E7D32", fillcolor="#A5D6A7:#FFCDD2:#E1BEE7"];
 
     // Invisible nodes for line style keys
     node [shape=point, width=0, height=0, label=""];
@@ -45,7 +43,7 @@ digraph Legend {
 
     // Define vertical alignment using invisible edges
     edge [style=invis, len=0.5];
-    Overworld_Key -> Nether_Key -> End_Key -> Dual_Key -> Tri_Key -> Rail_Key_Start -> Nether_Rail_Key_Start -> Overworld_Rail_Key_Start -> End_Rail_Key_Start -> Footpath_Key_Start -> Nether_Express_Key_Start;
+    Overworld_Key -> Nether_Key -> End_Key -> Rail_Key_Start -> Nether_Rail_Key_Start -> Overworld_Rail_Key_Start -> End_Rail_Key_Start -> Footpath_Key_Start -> Nether_Express_Key_Start;
     
     // Draw the visible edges for the legend line styles
     Rail_Key_Start -> Rail_Key_End [dir=none, style=bold, color="#4285F4", label="Intercontinental Railroad"];
