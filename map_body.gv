@@ -36,7 +36,9 @@ digraph MinecraftRailMap {
     Slacktown [label="Slacktown"];
     Sim_Tower [label="Sim Tower"];
     Squid_Farm [label="Squid Farm"];
+    Worr_FOB [label="Worr's FOB"];
     Worrton [label="Worrton"];
+    Mining_Squad_FOB [label="Mining Squad FOB"];
 
     // == NETHER NODES ==
     node [color="#C62828", fillcolor="#FFCDD2"];
@@ -106,8 +108,10 @@ digraph MinecraftRailMap {
     Home -> Mahjong_Parlour;
     Home -> Sim_Tower;
     Portal_Island -> Desert_Village;
-    Home -> Atlantis [label="scenic"];
-    CUBO -> Squid_Farm [label="scenic"];
+    Home -> Mining_Squad_FOB [label="scenic"];
+    Mining_Squad_FOB -> Atlantis [label="scenic"];
+    CUBO -> Worr_FOB [label="scenic"];
+    Worr_FOB -> Squid_Farm [label="scenic"];
     CUBO -> Worrton;
 
     // Nether rail (connects directly to Home)
