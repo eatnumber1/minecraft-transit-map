@@ -14,5 +14,8 @@ map.svg size.txt: map_body.svg legend.svg combine_svg.py
 map.png: map.svg size.txt
 	convert -size $$(cat size.txt) map.svg map.png
 
+legend.png: legend.svg
+	convert legend.svg legend.png
+
 clean:
-	rm -f map_body.svg legend.svg map.svg map.png size.txt
+	rm -f map_body.svg legend.svg legend.png map.svg map.png size.txt

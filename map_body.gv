@@ -75,7 +75,7 @@ digraph MinecraftRailMap {
 
     // Invisible junction nodes
     node [style=invis, shape=point, width=0, height=0, label=""];
-    Junction1;
+    Dragon_Junction;
     Junction2;
     Junction3;
     Junction4;
@@ -91,13 +91,13 @@ digraph MinecraftRailMap {
     Sheep_Farm -> Cow_Farm;
     Cow_Farm -> Chapel;
     Chapel -> Drowned_Farm;
-    Drowned_Farm -> Junction1;
-    Junction1 -> Mob_Grinder;
+    Drowned_Farm -> Dragon_Junction;
+    Dragon_Junction -> Mob_Grinder;
     Mob_Grinder -> CUBO;
 
     // Spur lines
-    edge [dir=none, style="", color="black"];
-    Junction1 -> Guardian_Farm;
+    edge [dir=none, style=solid, color="black"];
+    Dragon_Junction -> Guardian_Farm;
     Home -> Russells_Tower;
     Home -> Cliffertown;
     Cliffertown -> Slacktown;
@@ -105,11 +105,11 @@ digraph MinecraftRailMap {
     Home -> Sim_Tower;
     Portal_Island -> Desert_Village;
     Home -> Atlantis; // New Overworld route
-    CUBO -> Squid_Farm;
+    CUBO -> Squid_Farm [label="scenic"];
     CUBO -> Worrton;
 
     // Nether rail (connects directly to Home)
-    edge [dir=none, style=dotted, color="#C62828"];
+    edge [dir=none, style=solid, color="#C62828"];
     Home -> Junction2;
     Junction2 -> Hog_Farm;
     Junction2 -> Junction5;
@@ -142,7 +142,7 @@ digraph MinecraftRailMap {
     Home -> vvitch;
 
     // End rail (connects directly to End Village)
-    edge [dir=none, style=dashed, color="#4A148C"];
+    edge [dir=none, style=solid, color="#4A148C"];
     End_Village -> Enderman_Farm;
 
     // Footpath (connects directly to Home)

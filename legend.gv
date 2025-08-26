@@ -1,55 +1,83 @@
 digraph Legend {
+    //newrank=true;
     graph [
-        bgcolor="#F5F5F5",
-        fontname="Helvetica,Arial,sans-serif",
-        label="Legend",
-        fontcolor="black",
-        fontsize=10,
-        style=rounded
+        showboxes=2;
+        bgcolor="#F5F5F5";
+        fontname="Helvetica,Arial,sans-serif";
+        label="Legend";
+        fontcolor="black";
+        fontsize=10;
+        style=rounded;
+        //ranksep="0.02 equally";
+        ranksep=0.02;
     ];
     node [
-        fontname="Helvetica,Arial,sans-serif",
-        style=filled,
-        fontcolor="black",
-        fontsize=8,
+        fontname="Helvetica,Arial,sans-serif";
+        style=filled;
+        fontcolor="black";
+        fontsize=8;
         shape=box
     ];
     edge [
-        fontname="Helvetica,Arial,sans-serif",
+        fontname="Helvetica,Arial,sans-serif";
         fontsize=8
     ];
 
-    // Node Type Keys
-    Overworld_Key [label="Overworld", color="#2E7D32", fillcolor="#A5D6A7"];
-    Nether_Key [label="Nether", color="#C62828", fillcolor="#FFCDD2"];
-    End_Key [label="The End", color="#4A148C", fillcolor="#E1BEE7"];
+    rank=same;
+    subgraph cluster_stations {
+        label="Station Types";
+        // Node Type Keys
+        node [shape=box, style=filled, fontcolor="black", fontsize=8];
+        Overworld_Key [label="Overworld", color="#2E7D32", fillcolor="#A5D6A7"];
+        Nether_Key [label="Nether", color="#C62828", fillcolor="#FFCDD2"];
+        End_Key [label="The End", color="#4A148C", fillcolor="#E1BEE7"];
 
-    // Invisible nodes for line style keys
-    node [shape=point, width=0, height=0, label=""];
-    Rail_Key_Start; Rail_Key_End;
-    Nether_Rail_Key_Start; Nether_Rail_Key_End;
-    Overworld_Rail_Key_Start; Overworld_Rail_Key_End;
-    End_Rail_Key_Start; End_Rail_Key_End;
-    Footpath_Key_Start; Footpath_Key_End;
-    Nether_Express_Key_Start; Nether_Express_Key_End;
+        // Define vertical alignment
+        edge [style=invis, len=0.5];
+        Overworld_Key -> Nether_Key -> End_Key;
+    }
 
-    // Ensure horizontal alignment for line style keys
-    { rank=same; Rail_Key_Start; Rail_Key_End; }
-    { rank=same; Nether_Rail_Key_Start; Nether_Rail_Key_End; }
-    { rank=same; Overworld_Rail_Key_Start; Overworld_Rail_Key_End; }
-    { rank=same; End_Rail_Key_Start; End_Rail_Key_End; }
-    { rank=same; Footpath_Key_Start; Footpath_Key_End; }
-    { rank=same; Nether_Express_Key_Start; Nether_Express_Key_End; }
+    subgraph cluster_connections {
+        label="Connection Types";
+        //ranksep=1;
 
-    // Define vertical alignment using invisible edges
-    edge [style=invis, len=0.5];
-    Overworld_Key -> Nether_Key -> End_Key -> Rail_Key_Start -> Nether_Rail_Key_Start -> Overworld_Rail_Key_Start -> End_Rail_Key_Start -> Footpath_Key_Start -> Nether_Express_Key_Start;
-    
-    // Draw the visible edges for the legend line styles
-    Rail_Key_Start -> Rail_Key_End [dir=none, style=bold, color="#4285F4", label="Intercontinental Railroad"];
-    Nether_Rail_Key_Start -> Nether_Rail_Key_End [dir=none, style=dotted, color="#C62828", label="Nether Rail"];
-    Overworld_Rail_Key_Start -> Overworld_Rail_Key_End [dir=none, style="", color="black", label="Overworld Rail"];
-    End_Rail_Key_Start -> End_Rail_Key_End [dir=none, style=dashed, color="#4A148C", label="End Rail"];
-    Footpath_Key_Start -> Footpath_Key_End [dir=none, style=dashed, color="#795548", label="Footpath"];
-    Nether_Express_Key_Start -> Nether_Express_Key_End [dir=none, style=bold, color="#E53935", label="Nether Express Rail"];
+        // Node Type Keys
+        //node [shape=box, style=filled, fontcolor="black", fontsize=8];
+        //Overworld_Key [label="Overworld", color="#2E7D32", fillcolor="#A5D6A7"];
+        //Nether_Key [label="Nether", color="#C62828", fillcolor="#FFCDD2"];
+        //End_Key [label="The End", color="#4A148C", fillcolor="#E1BEE7"];
+
+        // Invisible nodes for the connection column
+        node [shape=point, width=0, height=0, label=""];
+        Intercont_Start; Intercont_End;
+        Overworld_Rail_Start; Overworld_Rail_End;
+        End_Rail_Start; End_Rail_End;
+        Footpath_Key_Start; Footpath_Key_End;
+        Nether_Rail_Start; Nether_Rail_End;
+        Nether_Express_Key_Start; Nether_Express_Key_End;
+
+        // Ensure horizontal alignment for line style keys
+        { rank=same; Intercont_Start; Intercont_End; }
+        { rank=same; Overworld_Rail_Start; Overworld_Rail_End; }
+        { rank=same; End_Rail_Start; End_Rail_End; }
+        { rank=same; Footpath_Key_Start; Footpath_Key_End; }
+        { rank=same; Nether_Express_Key_Start; Nether_Express_Key_End; }
+        { rank=same; Nether_Rail_Start; Nether_Rail_End; }
+
+        // Define vertical alignment
+        edge [style=invis, len=0.5];
+        //edge [minlen=1];
+        //edge [ranksep=3];
+        //edge [nodesep=1];
+        Intercont_Start -> Overworld_Rail_Start -> End_Rail_Start -> Footpath_Key_Start -> Nether_Rail_Start -> Nether_Express_Key_Start;
+
+        // Draw the visible edges for the legend line styles
+        edge [dir=none, minlen=3];
+        Intercont_Start -> Intercont_End [style=bold, color="#4285F4", label="Intercontinental Railroad"];
+        Overworld_Rail_Start -> Overworld_Rail_End [style="", color="black", label="Overworld Rail"];
+        End_Rail_Start -> End_Rail_End [style=dashed, color="#4A148C", label="End Rail"];
+        Footpath_Key_Start -> Footpath_Key_End [style=dashed, color="#795548", label="Footpath"];
+        Nether_Rail_Start -> Nether_Rail_End [style=dotted, color="#C62828", label="Nether Rail"];
+        Nether_Express_Key_Start -> Nether_Express_Key_End [style=bold, color="#E53935", label="Nether Express Rail"];
+    }
 }
