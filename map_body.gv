@@ -106,7 +106,7 @@ digraph MinecraftRailMap {
     Home -> Mahjong_Parlour;
     Home -> Sim_Tower;
     Portal_Island -> Desert_Village;
-    Home -> Atlantis; // New Overworld route
+    Home -> Atlantis [label="scenic"];
     CUBO -> Squid_Farm [label="scenic"];
     CUBO -> Worrton;
 
