@@ -2,6 +2,8 @@
 
 This project generates a visual map of the Minecraft server's transit network. The map shows all connected stations across the Overworld, Nether, and End, detailing the various rail and footpath lines that connect them.
 
+![map.svg](./map.svg)
+
 ## Transit Network Overview
 
 The network is centered around **Home**, which serves as the primary hub for travel to all three dimensions.
