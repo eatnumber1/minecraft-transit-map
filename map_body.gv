@@ -51,6 +51,7 @@ digraph MinecraftRailMap {
     // == THE END NODES ==
     node [color="#4A148C", fillcolor="#E1BEE7"];
     Enderman_Farm [label="Enderman Farm"];
+    Shulker_Farm [label="Shulker Farm"];
 
     // == DUAL-DIMENSION NODES ==
     node [style=wedged, penwidth=2, shape=ellipse];
@@ -83,6 +84,7 @@ digraph MinecraftRailMap {
     Junction6;
     Junction7;
     Junction8;
+    EndJunction1;
 
     // == EDGES / RAIL CONNECTIONS ==
     // Main railroad line
@@ -110,19 +112,19 @@ digraph MinecraftRailMap {
 
     // Nether rail (connects directly to Home)
     edge [dir=none, style=solid, color="#C62828"];
-    Home -> Junction2;
-    Junction2 -> Hog_Farm;
-    Junction2 -> Junction5;
-    Junction5 -> Duncs_Mistake;
+    Junction3 -> Junction2;
+    Junction3 -> Hog_Farm;
+    Hog_Farm -> Junction5;
+    Home -> Junction3;
+    Junction2 -> Duncs_Mistake;
     Duncs_Mistake -> Portal_Island [label="scenic"]; // Local line
-    Duncs_Mistake -> CUBO;
+    Junction2 -> CUBO;
     CUBO -> _2UBO;
     Home -> End_Village;
     Home -> Pale_Oak_Forest;
-    Home -> Junction3;
-    Junction3 -> Ancient_City;
+    Junction5 -> Ancient_City;
     Ancient_City -> Atlantis; // Existing Nether route
-    Junction3 -> Junction4;
+    Junction5 -> Junction4;
     Junction4 -> CML_Memorial;
     Junction4 -> Sand_Mine;
     Sand_Mine -> Frog;
@@ -143,7 +145,9 @@ digraph MinecraftRailMap {
 
     // End rail (connects directly to End Village)
     edge [dir=none, style=solid, color="#4A148C"];
-    End_Village -> Enderman_Farm;
+    End_Village -> EndJunction1
+    EndJunction1 -> Enderman_Farm;
+    EndJunction1 -> Shulker_Farm;
 
     // Footpath (connects directly to Home)
     edge [dir=none, style=dashed, color="#795548"];
